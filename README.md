@@ -1,4 +1,4 @@
-# employee-management-system
+#employee-management-system
 The goal is to build a console-based Employee Management System in Python that demonstrates understanding of:
 
 Classes (to represent entities like Employee, Department, and Manager).
