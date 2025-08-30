@@ -5,11 +5,11 @@ ADMIN_DEPARTMENT = 12
 POSITIONS = [
     {
       'department_id': FE_DEPARTMENT,
-      'positions': [
-          {'id' : '1_1', 'name' : 'JavaScript Developer' },
-          {'id': '1_2', 'name' :  'React.js Developer'},
-          {'id': '1_2', 'name' :  'FullStack Developer'}
-        ]
+          'positions': [
+              {'id' : '1_1', 'name' : 'JavaScript Developer' },
+              {'id': '1_2', 'name' :  'React.js Developer'},
+              {'id': '1_2', 'name' :  'FullStack Developer'}
+            ]
     },
 
     {

@@ -1,24 +1,6 @@
-# Project setup + file/module structure
-# Implement Employee and Department classes
-# Implement storage module (JSON read/write)
-# CRUD operations in operations.py
-# Build interactive menu (main.py)
-# Test all features
-# Polish code + comments + error handling
-# Buffer/extra time
-import storage
-# Add Employee
-# View Employees
-# Update Employee
-# Delete Employee
-# Department Summary
-# Exit
-#
-
-from operations import add_employee, update_employee, delete_employee, view_employee
+from operations import add_employee, update_employee, delete_employee, view_employee, get_department_summary
 from components.department import Department
 department_instance = Department()
-
 
 def get_department_from_user():
     all_departments = department_instance.get_all_lists()
@@ -97,6 +79,19 @@ def ask_option_for_update(emp_obj):
         elif user_update_action == 5:
             update_continue = False
     return updated_employee_info
+
+def  format_department_summary(info):
+    print("-------------------------------------------")
+    print(">>>> EMS DEPARTMENT INFO <<<<<")
+    summary = f"Name: {info['department']['name']}\n"
+    summary += f"total positions: {info['department']['total_positions']}\n"
+
+    extracted_positions = [pos['name'] for position in department_instance.positions if info['department']['id'] == position['department_id'] for pos in position['positions']]
+    extracted_positions = ", ".join(extracted_positions)
+    summary += f"Position Name: {extracted_positions}"
+    print(summary)
+    print("-------------------------------------------")
+
 continue_to_ask = True
 print("Welcome to console-based Employee Management System!")
 employee_id = None
@@ -118,7 +113,6 @@ while continue_to_ask:
           "4. Delete Employee\n"
           "5. Department Summary\n"
           "6. Exit\n"))
-
     if user_action == 1:
         employee_id = collect_employee_information()
         if employee_id is None or employee_id == "":
@@ -142,8 +136,9 @@ while continue_to_ask:
     elif user_action == 4:
         employee_id  = get_employee_id(employee_id)
         delete_employee(employee_id)
-
     elif user_action == 5:
-        pass
+        employee_id = get_employee_id(employee_id)
+        department_summary = get_department_summary(employee_id)
+        format_department_summary(department_summary)
     elif user_action == 6:
         exit()

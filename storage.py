@@ -42,7 +42,4 @@ def remove(employee_id):
     else:
         print("employee ID not found")
 
-my_data = {
-    'name': 'raj',
-    'age': 22,
-}
+

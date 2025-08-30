@@ -19,18 +19,6 @@ def update_employee (employee_id, data):
     if data is None or len(data) == 0 or ('name' not in data and 'age' not in data):
         return "No data"
     else:
-        # if 'name' in data:
-        #     employee.name = data['name']
-        #
-        # if 'age' in data:
-        #     employee.age = data['age']
-        #
-        # if 'department' in data:
-        #     employee.department = data['department']
-        #
-        # if 'position' in data:
-        #     employee.position = data['position']
-
         storage.save_data({employee_id: data})
         print("updated data successfully")
         return "success"
@@ -40,6 +28,8 @@ def delete_employee (employee_id):
 
 def get_department_summary(employee_id):
     employee = storage.get_data(employee_id)
-    if employee_id in employee:
-        return employee.department
+
+    if employee_id == employee['id']:
+        department_summary =  {'position': employee['position'], 'department': employee['department']}
+        return department_summary
     return None
